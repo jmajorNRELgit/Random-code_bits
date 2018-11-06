@@ -19,7 +19,7 @@ if (any(x.count(i) > 1 for i in x)) == False:
     print('No exact duplicates found\n')
 
 #List to hold duplicate's location. Also used to avoid catching them twice
-duplicates = []
+duplicate_locations = []
 
 
 
@@ -27,12 +27,12 @@ duplicates = []
 def check_list(lis):
     for j in range(len(lis)):
         for i in range(len(lis)):
-            if i != j and i not in duplicates and j not in duplicates:
+            if i != j and i not in duplicate_locations and j not in duplicate_locations:
                 if SequenceMatcher(None, lis[j],lis[i]).ratio() > .9:
                     print(lis[j],
                           '\n'+str(lis[i]),
                           '\nMatch: ' + str(SequenceMatcher(None, lis[j],lis[i]).ratio()),
                           '\nlocation: ' + str(j+1),'\n' )
-                    duplicates.append(j)
+                    duplicate_locations.append(j)
 
 check_list(x)
