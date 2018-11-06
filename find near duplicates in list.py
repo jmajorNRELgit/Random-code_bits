@@ -8,6 +8,8 @@ Created on Tue Nov  6 08:49:43 2018
 from difflib import SequenceMatcher
 import pandas as pd
 
+import time
+start = time.time()
 #Pull data from csv
 df = pd.read_csv('C:/Users/jmajor/Desktop/emails.csv', header = None)
 
@@ -28,7 +30,7 @@ def check_list(lis):
     for j in range(len(lis)):
         for i in range(len(lis)):
             if i != j and i not in duplicate_locations and j not in duplicate_locations:
-                if SequenceMatcher(None, lis[j],lis[i]).ratio() > .9:
+                if SequenceMatcher(None, lis[j],lis[i]).quick_ratio() > .9:
                     print(lis[j],
                           '\n'+str(lis[i]),
                           '\nMatch: ' + str(SequenceMatcher(None, lis[j],lis[i]).ratio()),
@@ -36,3 +38,5 @@ def check_list(lis):
                     duplicate_locations.append(j)
 
 check_list(x)
+
+print(time.time() - start)
