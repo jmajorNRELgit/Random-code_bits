@@ -6,15 +6,16 @@ Created on Tue Nov  6 08:49:43 2018
 """
 #Imports
 from difflib import SequenceMatcher
-import pandas as pd
 
 import time
 start = time.time()
-#Pull data from csv
-df = pd.read_csv('C:/Users/jmajor/Desktop/emails.csv', header = None)
+
+
+
+
 
 #Put data into a list
-x = list(df[0])
+x = "michael.barako@northropgrummannext.net","michael.barako@northrupgrummannext.net","daijiangnan@hust.edu.cn","daijiangnan@mail.hust.edu.cn"
 
 #checks if there are any exact duplicates in the list
 if (any(x.count(i) > 1 for i in x)) == False:
@@ -40,3 +41,5 @@ def check_list(lis):
 check_list(x)
 
 print(time.time() - start)
+
+
